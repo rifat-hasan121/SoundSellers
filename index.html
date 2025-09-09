@@ -4,18 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SoundSellers</title>
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
  
 </head>
+
+
 <body>
 
-  <!-- ================= NAV SECTION ================= -->
+
+  <!--  NAV SECTION->
  
 <!-- Add Alpine.js (for menu toggle) -->
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-<nav class="bg-white shadow-sm" x-data="{ open: false }">
+<nav class="bg-white shadow-sm">
   <div class="max-w-7xl mx-auto px-6">
     <div class="flex justify-between items-center h-16">
 
@@ -27,159 +30,133 @@
 
       <!-- Desktop Menu -->
       <ul class="hidden md:flex space-x-6 text-gray-800 font-medium">
-        <li class="relative group">
-          <a href="#" class="flex items-center gap-1 hover:text-gray-400">
-            Marketplace
-            <img src="./icons/iconamoon_arrow-down-2-light.png" alt="" class="w-3 h-3">
-          </a>
-        </li>
+        <li><a href="#" class="flex items-center gap-1 hover:text-gray-400">Marketplace <img src="./icons/iconamoon_arrow-down-2-light.png" alt="" class="w-3 h-3"></a></li>
         <li><a href="#" class="hover:text-gray-400">Studio</a></li>
         <li><a href="#" class="hover:text-gray-400">About</a></li>
         <li><a href="#" class="hover:text-gray-400">Contact</a></li>
       </ul>
 
-      <!-- Right Icons -->
+      <!-- Right Icons (Desktop) -->
       <div class="hidden md:flex items-center space-x-4">
-
-        <!-- Heart -->
         <div class="relative">
           <img src="./icons/heart.png" alt="heart" class="w-6 h-6">
           <span class="absolute -top-2 -right-2 bg-white border border-gray-300 text-gray-700 text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
         </div>
 
-        <!-- Cart -->
         <div class="relative">
           <img src="./icons/card.png" alt="cart" class="w-6 h-6">
           <span class="absolute -top-2 -right-2 bg-white border border-gray-300 text-gray-700 text-xs w-5 h-5 rounded-full flex items-center justify-center">2</span>
         </div>
 
-        <!-- Profile -->
         <div>
           <img src="./icons/profile.png" alt="profile" class="h-8 rounded-full">
         </div>
 
-        <!-- Sell Button -->
-        <button class="bg-[#A67C52] text-white px-4 py-2 rounded-full hover:bg-[#8b6842] whitespace-nowrap">
-          Sell your gear
-        </button>
+        <button class="bg-[#A67C52] text-white px-4 py-2 rounded-full hover:bg-[#8b6842] whitespace-nowrap">Sell your gear</button>
       </div>
 
       <!-- Mobile Menu Button -->
       <div class="md:hidden">
-        <button @click="open = !open" class="focus:outline-none">
-          <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" stroke-width="2"
-            viewBox="0 0 24 24">
-            <path x-show="!open" stroke-linecap="round" stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16" />
-            <path x-show="open" stroke-linecap="round" stroke-linejoin="round"
-              d="M6 18L18 6M6 6l12 12" />
+        <button id="menu-toggle" class="focus:outline-none">
+          <svg id="menu-icon" class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path id="menu-bars" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
     </div>
 
-    <!-- Mobile Dropdown -->
-    <div x-show="open" x-transition class="md:hidden mt-4 space-y-4">
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-4">
       <ul class="space-y-2 text-gray-800 font-medium">
-        <li>
-          <a href="#" class="flex items-center gap-2 hover:text-gray-400">
-            Marketplace
-            <img src="./icons/iconamoon_arrow-down-2-light.png" alt="" class="w-3 h-3">
-          </a>
-        </li>
+        <li><a href="#" class="flex items-center gap-2 hover:text-gray-400">Marketplace <img src="./icons/iconamoon_arrow-down-2-light.png" alt="" class="w-3 h-3"></a></li>
         <li><a href="#" class="hover:text-gray-400">Studio</a></li>
         <li><a href="#" class="hover:text-gray-400">About</a></li>
         <li><a href="#" class="hover:text-gray-400">Contact</a></li>
       </ul>
 
-      <!-- Icons in Mobile -->
       <div class="flex items-center justify-start space-x-4 pt-4">
         <div class="relative">
           <img src="./icons/heart.png" alt="heart" class="w-6 h-6">
           <span class="absolute -top-2 -right-2 bg-white border border-gray-300 text-gray-700 text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
         </div>
-
         <div class="relative">
           <img src="./icons/card.png" alt="cart" class="w-6 h-6">
           <span class="absolute -top-2 -right-2 bg-white border border-gray-300 text-gray-700 text-xs w-5 h-5 rounded-full flex items-center justify-center">2</span>
         </div>
-
         <div>
           <img src="./icons/profile.png" alt="profile" class="h-8 rounded-full">
         </div>
       </div>
 
-      <!-- Mobile Sell Button -->
       <div class="p-4">
-        <button class="bg-[#A67C52] text-white px-4 py-2 rounded-full hover:bg-[#8b6842] w-full">
-          Sell your gear
-        </button>
+        <button class="bg-[#A67C52] text-white px-4 py-2 rounded-full hover:bg-[#8b6842] w-full">Sell your gear</button>
       </div>
     </div>
   </div>
 </nav>
 
+<!-- ================= HERO SECTION ================= -->
+<!-- ================= HERO SECTION ================= -->
+<section class="relative bg-black text-white overflow-hidden min-h-screen flex items-center">
 
-
-  <!-- hero  -->
-   <!-- ================= HERO SECTION ================= -->
-<section class="relative min-h-screen flex items-center bg-black text-white overflow-hidden">
-  
-  <!-- Background image -->
-  <div class="absolute inset-0">
+  <!-- Background Drum Image -->
+  <div class="absolute inset-0 flex justify-end items-end md:items-center">
     <img 
-      src="./icons/freepik__fill-the-blank__45358 1.jpg"  <!-- put your drum image path here -->
+      src="./icons/freepik__fill-the-blank__45358 1.jpg"
       alt="Drum Set"
-      class="absolute right-0 top-1/2 -translate-y-1/2 max-h-[90%] object-contain"
+      class="w-auto max-h-[90%] object-contain hidden md:block block -mb-[20px]"
     />
   </div>
 
-  <!-- Dark overlay for better text visibility -->
+  <!-- Dark Gradient Overlay -->
   <div class="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-transparent"></div>
 
   <!-- Content -->
-  <div class="relative z-10 container mx-auto px-6 lg:px-12 flex flex-col items-start max-w-2xl">
-    
-    <!-- Heading -->
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-      Your Sound, Your Story
-    </h1>
+  <div class="relative z-10 w-full max-w-7xl px-6 sm:px-10 lg:px-16 mx-auto">
+    <div class="flex flex-col md:max-w-xl lg:max-w-2xl">
+      
+      <!-- Heading -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        Your Sound, Your Story
+      </h1>
 
-    <!-- Sub text -->
-    <p class="text-lg text-gray-300 mb-8 leading-relaxed">
-      Buy, sell, and rent musical instruments from trusted sellers. 
-      Connect with top music teachers and find your perfect sound.
-    </p>
+      <!-- Subtext -->
+      <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+        Buy, sell, and rent musical instruments from trusted sellers. 
+        Connect with top music teachers and find your perfect sound.
+      </p>
 
-    <!-- Buttons -->
-    <div class="flex gap-4 mb-12">
-      <button class="bg-[#b78b57] hover:bg-[#a67b45] text-white font-medium px-6 py-3 rounded-full shadow-lg transition">
-        Shop Now
-      </button>
-      <button class="border border-gray-400 hover:border-white px-6 py-3 rounded-full font-medium transition">
-        Find Lessons
-      </button>
-    </div>
+      <!-- Buttons -->
+      <div class="flex flex-wrap gap-4 mb-12">
+        <button class="bg-[#b78b57] hover:bg-[#a67b45] text-white font-semibold px-6 py-3 rounded-full shadow-md transition">
+          Shop Now
+        </button>
+        <button class="border border-gray-400 hover:border-white text-white px-6 py-3 rounded-full font-semibold transition">
+          Find Lessons
+        </button>
+      </div>
 
-    <!-- Stats -->
-    <div class="flex gap-12">
-      <div class="flex flex-col items-center">
-        <span class="text-2xl font-bold">50K+</span>
-        <span class="text-sm text-gray-400">Active Listings</span>
+      <!-- Stats -->
+      <div class="flex flex-col sm:flex-row sm:gap-12 gap-6">
+        <div class="flex flex-col items-start sm:items-center">
+          <span class="text-2xl font-bold">50K+</span>
+          <span class="text-sm text-gray-400">Active Listings</span>
+        </div>
+        <div class="flex flex-col items-start sm:items-center">
+          <span class="text-2xl font-bold">15K+</span>
+          <span class="text-sm text-gray-400">Happy Musicians</span>
+        </div>
+        <div class="flex flex-col items-start sm:items-center">
+          <span class="text-2xl font-bold">500+</span>
+          <span class="text-sm text-gray-400">Music Teachers</span>
+        </div>
       </div>
-      <div class="flex flex-col items-center">
-        <span class="text-2xl font-bold">15K+</span>
-        <span class="text-sm text-gray-400">Happy Musicians</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <span class="text-2xl font-bold">500+</span>
-        <span class="text-sm text-gray-400">Music Teachers</span>
-      </div>
+
     </div>
   </div>
 </section>
 
-
+ 
 <!-- ================= SHOP BY CATEGORY ================= -->
 <section class="py-16 bg-white">
   <div class="max-w-7xl mx-auto px-6 text-center">
@@ -822,6 +799,7 @@
 
 
 
-
+<script src="./script.js"></script>
 </body>
+
 </html>
