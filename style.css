@@ -7,3 +7,14 @@
 .primary-color{
     color: #A67C52;
 }
+.price{
+    color: #101828;
+    font-weight: 700;
+    font-size: 20px;
+    font-style: bold;
+}
+.lesson-text{
+    font-size: 14px;
+    color: #667085;
+    font-weight: 400;
+}

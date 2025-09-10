@@ -1,805 +1,1266 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SoundSellers</title>
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
- 
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SoundSellers</title>
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
 
-<body>
-
-
-  <!--  NAV SECTION->
+  <body>
+    <!--  NAV SECTION->
  
 <!-- Add Alpine.js (for menu toggle) -->
 
-<nav class="bg-white shadow-sm">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex justify-between items-center h-16">
+    <nav class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex items-center space-x-2">
+            <img src="./icons/Img.png" alt="Logo" class="h-10 w-10" />
+            <span class="text-xl font-bold text-[#A67C52]">SoundSellers</span>
+          </div>
 
-      <!-- Logo -->
-      <div class="flex items-center space-x-2">
-        <img src="./icons/Img.png" alt="Logo" class="h-10 w-10">
-        <span class="text-xl font-bold text-[#A67C52]">SoundSellers</span>
+          <!-- Desktop Menu -->
+          <ul class="hidden md:flex space-x-6 text-gray-800 font-medium">
+            <li>
+              <a href="#" class="flex items-center gap-1 hover:text-gray-400"
+                >Marketplace
+                <img
+                  src="./icons/iconamoon_arrow-down-2-light.png"
+                  alt=""
+                  class="w-3 h-3"
+              /></a>
+            </li>
+            <li><a href="#" class="hover:text-gray-400">Studio</a></li>
+            <li><a href="#" class="hover:text-gray-400">About</a></li>
+            <li><a href="#" class="hover:text-gray-400">Contact</a></li>
+          </ul>
+
+          <!-- Right Icons (Desktop) -->
+          <div class="hidden md:flex items-center space-x-4">
+            <div class="relative">
+              <img src="./icons/heart.png" alt="heart" class="w-6 h-6" />
+              <span
+                class="absolute -top-2 -right-2 bg-white border border-gray-300 text-gray-700 text-xs w-5 h-5 rounded-full flex items-center justify-center"
+                >3</span
+              >
+            </div>
+
+            <div class="relative">
+              <img src="./icons/card.png" alt="cart" class="w-6 h-6" />
+              <span
+                class="absolute -top-2 -right-2 bg-white border border-gray-300 text-gray-700 text-xs w-5 h-5 rounded-full flex items-center justify-center"
+                >2</span
+              >
+            </div>
+
+            <div>
+              <img
+                src="./icons/profile.png"
+                alt="profile"
+                class="h-8 rounded-full"
+              />
+            </div>
+
+            <button
+              class="bg-[#A67C52] text-white px-4 py-2 rounded-full hover:bg-[#8b6842] whitespace-nowrap"
+            >
+              Sell your gear
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="md:hidden">
+            <button id="menu-toggle" class="focus:outline-none">
+              <svg
+                id="menu-icon"
+                class="w-6 h-6 text-gray-800"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  id="menu-bars"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-4">
+          <ul class="space-y-2 text-gray-800 font-medium">
+            <li>
+              <a href="#" class="flex items-center gap-2 hover:text-gray-400"
+                >Marketplace
+                <img
+                  src="./icons/iconamoon_arrow-down-2-light.png"
+                  alt=""
+                  class="w-3 h-3"
+              /></a>
+            </li>
+            <li><a href="#" class="hover:text-gray-400">Studio</a></li>
+            <li><a href="#" class="hover:text-gray-400">About</a></li>
+            <li><a href="#" class="hover:text-gray-400">Contact</a></li>
+          </ul>
+
+          <div class="flex items-center justify-start space-x-4 pt-4">
+            <div class="relative">
+              <img src="./icons/heart.png" alt="heart" class="w-6 h-6" />
+              <span
+                class="absolute -top-2 -right-2 bg-white border border-gray-300 text-gray-700 text-xs w-5 h-5 rounded-full flex items-center justify-center"
+                >3</span
+              >
+            </div>
+            <div class="relative">
+              <img src="./icons/card.png" alt="cart" class="w-6 h-6" />
+              <span
+                class="absolute -top-2 -right-2 bg-white border border-gray-300 text-gray-700 text-xs w-5 h-5 rounded-full flex items-center justify-center"
+                >2</span
+              >
+            </div>
+            <div>
+              <img
+                src="./icons/profile.png"
+                alt="profile"
+                class="h-8 rounded-full"
+              />
+            </div>
+          </div>
+
+          <div class="p-4">
+            <button
+              class="bg-[#A67C52] text-white px-4 py-2 rounded-full hover:bg-[#8b6842] w-full"
+            >
+              Sell your gear
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section
+      class="relative bg-black text-white overflow-hidden min-h-screen flex items-center"
+    >
+      <!-- Background Drum Image -->
+      <div class="absolute inset-0 flex justify-end items-end md:items-center">
+        <img
+          src="./icons/freepik__fill-the-blank__45358 1.jpg"
+          alt="Drum Set"
+          class="w-auto max-h-[90%] object-contain hidden md:block block -mb-[20px]"
+        />
       </div>
 
-      <!-- Desktop Menu -->
-      <ul class="hidden md:flex space-x-6 text-gray-800 font-medium">
-        <li><a href="#" class="flex items-center gap-1 hover:text-gray-400">Marketplace <img src="./icons/iconamoon_arrow-down-2-light.png" alt="" class="w-3 h-3"></a></li>
-        <li><a href="#" class="hover:text-gray-400">Studio</a></li>
-        <li><a href="#" class="hover:text-gray-400">About</a></li>
-        <li><a href="#" class="hover:text-gray-400">Contact</a></li>
-      </ul>
+      <!-- Dark Gradient Overlay -->
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-transparent"
+      ></div>
 
-      <!-- Right Icons (Desktop) -->
-      <div class="hidden md:flex items-center space-x-4">
-        <div class="relative">
-          <img src="./icons/heart.png" alt="heart" class="w-6 h-6">
-          <span class="absolute -top-2 -right-2 bg-white border border-gray-300 text-gray-700 text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
-        </div>
+      <!-- Content -->
+      <div
+        class="relative z-10 w-full max-w-7xl px-6 sm:px-10 lg:px-16 mx-auto"
+      >
+        <div class="flex flex-col md:max-w-xl lg:max-w-2xl">
+          <!-- Heading -->
+          <h1
+            class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+          >
+            Your Sound, Your Story
+          </h1>
 
-        <div class="relative">
-          <img src="./icons/card.png" alt="cart" class="w-6 h-6">
-          <span class="absolute -top-2 -right-2 bg-white border border-gray-300 text-gray-700 text-xs w-5 h-5 rounded-full flex items-center justify-center">2</span>
-        </div>
+          <!-- Subtext -->
+          <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+            Buy, sell, and rent musical instruments from trusted sellers.
+            Connect with top music teachers and find your perfect sound.
+          </p>
 
-        <div>
-          <img src="./icons/profile.png" alt="profile" class="h-8 rounded-full">
-        </div>
+          <!-- Buttons -->
+          <div class="flex flex-wrap gap-4 mb-12">
+            <button
+              class="bg-[#b78b57] hover:bg-[#a67b45] text-white font-semibold px-6 py-3 rounded-full shadow-md transition"
+            >
+              Shop Now
+            </button>
+            <button
+              class="border border-gray-400 hover:border-white text-white px-6 py-3 rounded-full font-semibold transition"
+            >
+              Find Lessons
+            </button>
+          </div>
 
-        <button class="bg-[#A67C52] text-white px-4 py-2 rounded-full hover:bg-[#8b6842] whitespace-nowrap">Sell your gear</button>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <div class="md:hidden">
-        <button id="menu-toggle" class="focus:outline-none">
-          <svg id="menu-icon" class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path id="menu-bars" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-4">
-      <ul class="space-y-2 text-gray-800 font-medium">
-        <li><a href="#" class="flex items-center gap-2 hover:text-gray-400">Marketplace <img src="./icons/iconamoon_arrow-down-2-light.png" alt="" class="w-3 h-3"></a></li>
-        <li><a href="#" class="hover:text-gray-400">Studio</a></li>
-        <li><a href="#" class="hover:text-gray-400">About</a></li>
-        <li><a href="#" class="hover:text-gray-400">Contact</a></li>
-      </ul>
-
-      <div class="flex items-center justify-start space-x-4 pt-4">
-        <div class="relative">
-          <img src="./icons/heart.png" alt="heart" class="w-6 h-6">
-          <span class="absolute -top-2 -right-2 bg-white border border-gray-300 text-gray-700 text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
-        </div>
-        <div class="relative">
-          <img src="./icons/card.png" alt="cart" class="w-6 h-6">
-          <span class="absolute -top-2 -right-2 bg-white border border-gray-300 text-gray-700 text-xs w-5 h-5 rounded-full flex items-center justify-center">2</span>
-        </div>
-        <div>
-          <img src="./icons/profile.png" alt="profile" class="h-8 rounded-full">
+          <!-- Stats -->
+          <div class="flex flex-col sm:flex-row sm:gap-12 gap-6">
+            <div class="flex flex-col items-start sm:items-center">
+              <span class="text-2xl font-bold">50K+</span>
+              <span class="text-sm text-gray-400">Active Listings</span>
+            </div>
+            <div class="flex flex-col items-start sm:items-center">
+              <span class="text-2xl font-bold">15K+</span>
+              <span class="text-sm text-gray-400">Happy Musicians</span>
+            </div>
+            <div class="flex flex-col items-start sm:items-center">
+              <span class="text-2xl font-bold">500+</span>
+              <span class="text-sm text-gray-400">Music Teachers</span>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="p-4">
-        <button class="bg-[#A67C52] text-white px-4 py-2 rounded-full hover:bg-[#8b6842] w-full">Sell your gear</button>
+    <!-- SHOP BY CATEGORY-->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <!-- Heading -->
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+          Shop by Category
+        </h2>
+        <p class="text-gray-500 mb-12">
+          Discover thousands of musical instruments and equipment <br />
+          from trusted sellers worldwide
+        </p>
+
+        <!-- Category Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+          <!-- Card 1 -->
+          <div
+            class="flex flex-col items-center bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center rounded-lg bg-orange-100 mb-4"
+            >
+              <img src="./icons/guiter.png" alt="Guitars" class="w-6 h-6" />
+            </div>
+            <h3 class="font-semibold text-gray-800">Guitars</h3>
+            <p class="text-sm text-gray-500">12,500+ items</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div
+            class="flex flex-col items-center bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-100 mb-4"
+            >
+              <img
+                src="./icons/Keyboards icon.png"
+                alt="Keyboards"
+                class="w-6 h-6"
+              />
+            </div>
+            <h3 class="font-semibold text-gray-800">Keyboards</h3>
+            <p class="text-sm text-gray-500">8,200+ items</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div
+            class="flex flex-col items-center bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center rounded-lg bg-red-100 mb-4"
+            >
+              <img src="./icons/Drums icon.png" alt="Drums" class="w-6 h-6" />
+            </div>
+            <h3 class="font-semibold text-gray-800">Drums</h3>
+            <p class="text-sm text-gray-500">6,800+ items</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div
+            class="flex flex-col items-center bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center rounded-lg bg-purple-100 mb-4"
+            >
+              <img
+                src="./icons/Audio Equipment icon.png"
+                alt="Audio Equipment"
+                class="w-6 h-6"
+              />
+            </div>
+            <h3 class="font-semibold text-gray-800">Audio Equipment</h3>
+            <p class="text-sm text-gray-500">15,300+ items</p>
+          </div>
+
+          <!-- Card 5 -->
+          <div
+            class="flex flex-col items-center bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-100 mb-4"
+            >
+              <img
+                src="./icons/Microphones icon.png"
+                alt="Microphones"
+                class="w-6 h-6"
+              />
+            </div>
+            <h3 class="font-semibold text-gray-800">Microphones</h3>
+            <p class="text-sm text-gray-500">4,100+ items</p>
+          </div>
+
+          <!-- Card 6 -->
+          <div
+            class="flex flex-col items-center bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition"
+          >
+            <div
+              class="w-12 h-12 flex items-center justify-center rounded-lg bg-yellow-100 mb-4"
+            >
+              <img
+                src="./icons/Other Instruments icon.png"
+                alt="Others"
+                class="w-6 h-6"
+              />
+            </div>
+            <h3 class="font-semibold text-gray-800">Others</h3>
+            <p class="text-sm text-gray-500">3,200+ items</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</nav>
+    </section>
 
-<!-- ================= HERO SECTION ================= -->
-<!-- ================= HERO SECTION ================= -->
-<section class="relative bg-black text-white overflow-hidden min-h-screen flex items-center">
+    <!-- ================= TRENDING NOW ================= -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="flex justify-between items-center mb-8">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">
+              Trending Now
+            </h2>
+            <p class="text-gray-500">Hot deals that musicians are loving</p>
+          </div>
+          <a
+            href="#"
+            class="flex items-center gap-1 border border-gray-300 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-50 transition"
+          >
+            See all →
+          </a>
+        </div>
 
-  <!-- Background Drum Image -->
-  <div class="absolute inset-0 flex justify-end items-end md:items-center">
-    <img 
-      src="./icons/freepik__fill-the-blank__45358 1.jpg"
-      alt="Drum Set"
-      class="w-auto max-h-[90%] object-contain hidden md:block block -mb-[20px]"
-    />
-  </div>
+        <!-- Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1 -->
+          <div
+            class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+          >
+            <div class="relative">
+              <img
+                src="./icons/card/Frame 11.png"
+                alt="Fender"
+                class="w-full h-48 object-cover"
+              />
+              <div class="absolute top-3 left-3 flex gap-2">
+                <span
+                  class="bg-gray-100 text-gray-700 text-xs font-medium px-2 py-1 rounded-full"
+                  >Shop</span
+                >
+                <span
+                  class="bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full"
+                  >Great Deal</span
+                >
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-800">
+                Fender Player Stratocaster
+              </h3>
+              <p class="text-sm text-gray-500">
+                <i class="fa-solid fa-location-dot"> </i> Los Angeles, CA
+              </p>
+              <p class="text-lg font-bold mt-2">$899</p>
+              <div class="flex items-center justify-between mt-4">
+                <button
+                  class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md"
+                >
+                  🛒 Buy Now
+                </button>
+                <button
+                  class="border border-gray-300 p-2 rounded-full hover:bg-gray-50"
+                >
+                  <span><img src="./icons/SVG.png" alt="" /></span>
+                </button>
+              </div>
+            </div>
+          </div>
 
-  <!-- Dark Gradient Overlay -->
-  <div class="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-transparent"></div>
+          <!-- Card 2 -->
+          <div
+            class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+          >
+            <div class="relative">
+              <img
+                src="./icons/card/Frame 11 (1).png"
+                alt="Drums"
+                class="w-full h-48 object-cover"
+              />
+              <div class="absolute top-3 left-3 flex gap-2">
+                <span
+                  class="bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded-full"
+                  >Hot Deal</span
+                >
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-800">Pearl Drum Set</h3>
+              <p class="text-sm text-gray-500 gap-2">
+                <i class="fa-solid fa-location-dot"> </i> New York, NY
+              </p>
+              <p class="text-lg font-bold mt-2">
+                $50<span class="text-sm text-gray-500">/day</span>
+              </p>
+              <div class="flex items-center justify-between mt-4">
+                <button
+                  class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md flex justify-center items-center gap-2"
+                >
+                  <span><img src="./icons/cart.png" alt="card" /></span>
+                  <span>Buy Now</span>
+                </button>
+                <button
+                  class="border border-gray-300 p-2 rounded-full hover:bg-gray-50"
+                >
+                  <span><img src="./icons/SVG.png" alt="" /></span>
+                </button>
+              </div>
+            </div>
+          </div>
 
-  <!-- Content -->
-  <div class="relative z-10 w-full max-w-7xl px-6 sm:px-10 lg:px-16 mx-auto">
-    <div class="flex flex-col md:max-w-xl lg:max-w-2xl">
-      
+          <!-- Card 3 -->
+          <div
+            class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+          >
+            <div class="relative">
+              <img
+                src="./icons/card/Frame 11 (2).png"
+                alt="Keyboard"
+                class="w-full h-48 object-cover"
+              />
+              <div class="absolute top-3 left-3 flex gap-2">
+                <span
+                  class="bg-yellow-100 text-yellow-700 text-xs font-medium px-2 py-1 rounded-full"
+                  >Fair Price</span
+                >
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-800">Yamaha Keyboard</h3>
+              <p class="text-sm text-gray-500">
+                <i class="fa-solid fa-location-dot"> </i> Chicago, IL
+              </p>
+              <p class="text-lg font-bold mt-2">$1200</p>
+              <div class="flex items-center justify-between mt-4">
+                <button
+                  class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md"
+                >
+                  🛒 Buy Now
+                </button>
+                <button
+                  class="border border-gray-300 p-2 rounded-full hover:bg-gray-50"
+                >
+                  <span><img src="./icons/SVG.png" alt="" /></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div
+            class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+          >
+            <div class="relative">
+              <img
+                src="./icons/card/Frame 11 (3).png"
+                alt="Violin"
+                class="w-full h-48 object-cover"
+              />
+              <div class="absolute top-3 left-3 flex gap-2">
+                <span
+                  class="bg-blue-100 text-blue-700 text-xs font-medium px-2 py-1 rounded-full"
+                  >Limited</span
+                >
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-800">Classic Violin</h3>
+              <p class="text-sm text-gray-500">
+                <i class="fa-solid fa-location-dot"> </i> San Francisco, CA
+              </p>
+              <p class="text-lg font-bold mt-2">$499</p>
+              <div class="flex items-center justify-between mt-4">
+                <button
+                  class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md"
+                >
+                  🛒 Buy Now
+                </button>
+                <button
+                  class="border border-gray-300 p-2 rounded-full hover:bg-gray-50"
+                >
+                  <span><img src="./icons/SVG.png" alt="" /></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div
+            class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+          >
+            <div class="relative">
+              <img
+                src="./icons/card/Frame 11 (4).png"
+                alt="PRS"
+                class="w-full h-48 object-cover"
+              />
+              <div class="absolute top-3 left-3 flex gap-2">
+                <span
+                  class="bg-yellow-100 text-yellow-700 text-xs font-medium px-2 py-1 rounded-full"
+                  >Fair Price</span
+                >
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-800">PRS SE Custom 24</h3>
+              <p class="text-sm text-gray-500">
+                <i class="fa-solid fa-location-dot"> </i> Austin, TX
+              </p>
+              <p class="text-lg font-bold mt-2">$799</p>
+              <div class="flex items-center justify-between mt-4">
+                <button
+                  class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md flex justify-center items-center gap-2"
+                >
+                  <span><img src="./icons/cart.png" alt="card" /></span>
+                  <span>Buy Now</span>
+                </button>
+                <button
+                  class="border border-gray-300 p-2 rounded-full hover:bg-gray-50"
+                >
+                  <span><img src="./icons/SVG.png" alt="" /></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div
+            class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+          >
+            <div class="relative">
+              <img
+                src="./icons/card/Frame 11 (5).png"
+                alt="Jazzmaster"
+                class="w-full h-48 object-cover"
+              />
+              <div class="absolute top-3 left-3 flex gap-2">
+                <span
+                  class="bg-yellow-100 text-yellow-700 text-xs font-medium px-2 py-1 rounded-full"
+                  >Fair Price</span
+                >
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-800">Fender Jazzmaster</h3>
+              <p class="text-sm text-gray-500">
+                <i class="fa-solid fa-location-dot"> </i> Seattle, WA
+              </p>
+              <p class="text-lg font-bold mt-2">
+                $60<span class="text-sm text-gray-500">/day</span>
+              </p>
+              <div class="flex items-center justify-between mt-4">
+                <button
+                  class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md flex justify-center items-center gap-2"
+                >
+                  <span><img src="./icons/cart.png" alt="card" /></span>
+                  <span>Buy Now</span>
+                </button>
+                <button
+                  class="border border-gray-300 p-2 rounded-full hover:bg-gray-50"
+                >
+                  <span><img src="./icons/SVG.png" alt="" /></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div
+            class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+          >
+            <div class="relative">
+              <img
+                src="./icons/card/w.png"
+                alt="Epiphone"
+                class="w-full h-48 object-cover"
+              />
+              <div class="absolute top-3 left-3 flex gap-2">
+                <span
+                  class="bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full"
+                  >Great Deal</span
+                >
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-800">
+                Epiphone Les Paul Studio
+              </h3>
+              <p class="text-sm text-gray-500">
+                <i class="fa-solid fa-location-dot"> </i> Miami, FL
+              </p>
+              <p class="text-lg font-bold mt-2">
+                $100<span class="text-sm text-gray-500">/day</span>
+              </p>
+              <div class="flex items-center justify-between mt-4">
+                <button
+                  class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md flex justify-center items-center gap-2"
+                >
+                  <span><img src="./icons/cart.png" alt="card" /></span>
+                  <span>Buy Now</span>
+                </button>
+                <button
+                  class="border border-gray-300 p-2 rounded-full hover:bg-gray-50"
+                >
+                  <span><img src="./icons/SVG.png" alt="" /></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div
+            class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+          >
+            <div class="relative">
+              <img
+                src="./icons/card/Frame 11 (6).png"
+                alt="Jackson"
+                class="w-full h-48 object-cover"
+              />
+              <div class="absolute top-3 left-3 flex gap-2">
+                <span
+                  class="bg-yellow-100 text-yellow-700 text-xs font-medium px-2 py-1 rounded-full"
+                  >Fair Price</span
+                >
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-800">Jackson Dinky DK2</h3>
+              <p class="text-sm text-gray-500">
+                <i class="fa-solid fa-location-dot"> </i> Denver, CO
+              </p>
+              <p class="text-lg font-bold mt-2">$799</p>
+              <div class="flex items-center justify-between mt-4">
+                <button
+                  class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md"
+                >
+                  🛒 Buy Now
+                </button>
+                <button
+                  class="border border-gray-300 p-2 rounded-full hover:bg-gray-50"
+                >
+                  <span><img src="./icons/SVG.png" alt="" /></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bg-white py-12 px-6">
       <!-- Heading -->
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-        Your Sound, Your Story
-      </h1>
+      <div class="max-w-7xl mx-auto">
+        <div class="flex justify-between items-center mb-8">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900">Top Music Teachers</h2>
+            <p class="text-sm text-gray-500">
+              Learn from the best instructors in your area
+            </p>
+          </div>
+          <a
+            href="#"
+            class="text-sm text-orange-600 hover:underline flex items-center gap-1"
+          >
+            See all <span>→</span>
+          </a>
+        </div>
 
-      <!-- Subtext -->
-      <p class="text-lg text-gray-300 mb-8 leading-relaxed">
-        Buy, sell, and rent musical instruments from trusted sellers. 
-        Connect with top music teachers and find your perfect sound.
-      </p>
+        <!-- Cards Grid -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
+          <!-- Card 1 -->
+          <div class="bg-white rounded-xl shadow border overflow-hidden">
+            <div class="relative">
+              <img
+                src="./icons/p/placeholder.svg.png"
+                alt="Beginner Guitar Basics"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-white text-yellow-500 text-xs font-semibold rounded-full px-2 py-0.5 flex items-center gap-1 shadow"
+              >
+                ⭐ 4.9
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-sm font-semibold text-gray-900">
+                Beginner Guitar Basics
+              </h3>
+              <p class="text-sm text-gray-500">Sarah Johnson</p>
+              <p class="gap-2 flex items-center text-xs text-gray-500 mt-1">
+                <i class="fa-solid fa-location-dot"> </i> Los Angeles, CA
+              </p>
+              <div class="flex flex-wrap gap-1 text-xs mt-2">
+                <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded"
+                  >Classical</span
+                >
+                <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded"
+                  >Jazz</span
+                >
+                <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded"
+                  >Pop</span
+                >
+              </div>
+              <div class="mt-4 flex items-center justify-between text-sm">
+                <span class=""
+                  ><span class="price">$45</span>
+                  <span class="lesson-text">/lesson</span></span
+                >
+                <a href="#" class="text-[#A67C52] hover:underline">
+                  <div class="flex justify-center items-center gap-1">
+                    <span>Book Now</span>
+                    <span
+                      ><img src="./icons/up right arrow.png" alt=""
+                    /></span></div
+                ></a>
+              </div>
+            </div>
+          </div>
 
-      <!-- Buttons -->
-      <div class="flex flex-wrap gap-4 mb-12">
-        <button class="bg-[#b78b57] hover:bg-[#a67b45] text-white font-semibold px-6 py-3 rounded-full shadow-md transition">
-          Shop Now
-        </button>
-        <button class="border border-gray-400 hover:border-white text-white px-6 py-3 rounded-full font-semibold transition">
-          Find Lessons
-        </button>
+          <!-- Card 2 -->
+          <div class="bg-white rounded-xl shadow border overflow-hidden">
+            <div class="relative">
+              <img
+                src="./icons/p/placeholder.svg (1).png"
+                alt="Saxophone Fundamentals"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-white text-yellow-500 text-xs font-semibold rounded-full px-2 py-0.5 flex items-center gap-1 shadow"
+              >
+                ⭐ 4.8
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-sm font-semibold text-gray-900">
+                Saxophone Fundamentals
+              </h3>
+              <p class="text-sm text-gray-500">James Carter</p>
+              <p class="gap-2 flex items-center text-xs text-gray-500 mt-1">
+                <i class="fa-solid fa-location-dot"> </i> New York, NY
+              </p>
+              <div class="flex flex-wrap gap-1 text-xs mt-2">
+                <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded"
+                  >Rock</span
+                >
+                <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded"
+                  >Blues</span
+                >
+                <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded"
+                  >Indie</span
+                >
+              </div>
+              <div class="mt-4 flex items-center justify-between text-sm">
+                <span class="font-bold text-gray-800"
+                  ><span class=""
+                    ><span class="price">$50</span>
+                    <span class="lesson-text">/lesson</span></span
+                  ></span
+                >
+                <a href="#" class="text-[#A67C52] hover:underline">
+                  <div class="flex justify-center items-center gap-1">
+                    <span>Book Now</span>
+                    <span
+                      ><img src="./icons/up right arrow.png" alt=""
+                    /></span></div
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white rounded-xl shadow border overflow-hidden">
+            <div class="relative">
+              <img
+                src="./icons/p/placeholder.svg (2).png"
+                alt="Violin Made Easy"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-white text-yellow-500 text-xs font-semibold rounded-full px-2 py-0.5 flex items-center gap-1 shadow"
+              >
+                ⭐ 4.7
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-sm font-semibold text-gray-900">
+                Violin Made Easy
+              </h3>
+              <p class="text-sm text-gray-500">Emily Thompson</p>
+              <p class="gap-2 flex items-center text-xs text-gray-500 mt-1">
+                <i class="fa-solid fa-location-dot"> </i> Seattle, WA
+              </p>
+              <div class="flex flex-wrap gap-1 text-xs mt-2">
+                <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded"
+                  >Classical</span
+                >
+                <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded"
+                  >Folk</span
+                >
+                <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded"
+                  >World</span
+                >
+              </div>
+              <div class="mt-4 flex items-center justify-between text-sm">
+                <span class="font-bold text-gray-800"
+                  ><span class=""
+                    ><span class="price">$55</span>
+                    <span class="lesson-text">/lesson</span></span
+                  ></span
+                >
+                <a href="#" class="text-[#A67C52] hover:underline">
+                  <div class="flex justify-center items-center gap-1">
+                    <span>Book Now</span>
+                    <span
+                      ><img src="./icons/up right arrow.png" alt=""
+                    /></span></div
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white rounded-xl shadow border overflow-hidden">
+            <div class="relative">
+              <img
+                src="./icons/p/placeholder.svg (3).png"
+                alt="Vocal Training"
+                class="w-full h-48 object-cover"
+              />
+              <div
+                class="absolute top-2 right-2 bg-white text-yellow-500 text-xs font-semibold rounded-full px-2 py-0.5 flex items-center gap-1 shadow"
+              >
+                ⭐ 4.9
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="text-sm font-semibold text-gray-900">
+                Vocal Training
+              </h3>
+              <p class="text-sm text-gray-500">Michael Anderson</p>
+              <p class="gap-2 flex items-center text-xs text-gray-500 mt-1">
+                <i class="fa-solid fa-location-dot"> </i> Austin, TX
+              </p>
+              <div class="flex flex-wrap gap-1 text-xs mt-2">
+                <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded"
+                  >Rock</span
+                >
+                <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded"
+                  >Metal</span
+                >
+                <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded"
+                  >Hip-Hop</span
+                >
+              </div>
+              <div class="mt-4 flex items-center justify-between text-sm">
+                <span class="font-bold text-gray-800"
+                  ><span class=""
+                    ><span class="price">$40</span>
+                    <span class="lesson-text">/lesson</span></span
+                  ></span
+                >
+                <a href="#" class="text-[#A67C52] hover:underline">
+                  <div class="flex justify-center items-center gap-1">
+                    <span>Book Now</span>
+                    <span
+                      ><img src="./icons/up right arrow.png" alt=""
+                    /></span></div
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <!-- Stats -->
-      <div class="flex flex-col sm:flex-row sm:gap-12 gap-6">
-        <div class="flex flex-col items-start sm:items-center">
-          <span class="text-2xl font-bold">50K+</span>
-          <span class="text-sm text-gray-400">Active Listings</span>
-        </div>
-        <div class="flex flex-col items-start sm:items-center">
-          <span class="text-2xl font-bold">15K+</span>
-          <span class="text-sm text-gray-400">Happy Musicians</span>
-        </div>
-        <div class="flex flex-col items-start sm:items-center">
-          <span class="text-2xl font-bold">500+</span>
-          <span class="text-sm text-gray-400">Music Teachers</span>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
+    <!-- Why Choose SoundSellers Section  -->
+    <section class="bg-[#F6F2EE] py-16 px-6">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+          Why Choose SoundSellers?
+        </h2>
+        <p class="text-gray-500 mb-12 text-sm md:text-base">
+          We're more than just a marketplace – we're your trusted partner in
+          your musical journey
+        </p>
 
- 
-<!-- ================= SHOP BY CATEGORY ================= -->
-<section class="py-16 bg-white">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    
-    <!-- Heading -->
-    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
-      Shop by Category
-    </h2>
-    <p class="text-gray-500 mb-12">
-      Discover thousands of musical instruments and equipment from trusted sellers worldwide
-    </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+          <!-- Feature 1 -->
+          <div class="flex flex-col items-center">
+            <div class="bg-green-100 p-4 rounded-xl mb-4">
+              <img src="./icons/b/Background.png" alt="" />
+            </div>
+            <h3 class="font-semibold text-gray-900">Secure Transactions</h3>
+            <p class="text-gray-500 text-sm mt-2">
+              Every purchase is protected with our buyer guarantee and secure
+              payment processing.
+            </p>
+          </div>
 
-    <!-- Category Grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-      
-      <!-- Card 1 -->
-      <div class="flex flex-col items-center bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition">
-        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-orange-100 mb-4">
-          <img src="./icons/guiter.png" alt="Guitars" class="w-6 h-6">
+          <!-- Feature 2 -->
+          <div class="flex flex-col items-center">
+            <div class="bg-yellow-100 p-4 rounded-xl mb-4">
+              <img src="./icons/b/Background (1).png" alt="" />
+            </div>
+            <h3 class="font-semibold text-gray-900">Best Prices</h3>
+            <p class="text-gray-500 text-sm mt-2">
+              Compare prices across sellers and get the best deals on quality
+              instruments.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="flex flex-col items-center">
+            <div class="bg-purple-100 p-4 rounded-xl mb-4">
+              <img src="./icons/b/Background (2).png" alt="" />
+            </div>
+            <h3 class="font-semibold text-gray-900">Quality Guaranteed</h3>
+            <p class="text-gray-500 text-sm mt-2">
+              All instruments are inspected and verified for authenticity and
+              condition.
+            </p>
+          </div>
         </div>
-        <h3 class="font-semibold text-gray-800">Guitars</h3>
-        <p class="text-sm text-gray-500">12,500+ items</p>
       </div>
+    </section>
 
-      <!-- Card 2 -->
-      <div class="flex flex-col items-center bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition">
-        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-100 mb-4">
-          <img src="./icons/Keyboards icon.png" alt="Keyboards" class="w-6 h-6">
+    <!-- Choose Your Seller Plan Section  -->
+
+    <section class="bg-[#f9f6f2] py-16 px-6">
+      <div class="max-w-6xl mx-auto text-center">
+        <!-- Heading -->
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+          Choose Your Seller Plan
+        </h2>
+        <p class="text-gray-500 mb-12 text-sm md:text-base">
+          Grow your business with the right tools. Start free and scale as you
+          grow.
+        </p>
+
+        <!-- Pricing Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <!-- Free Plan -->
+          <div
+            class="bg-white rounded-xl border shadow-sm p-6 flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex justify-center mb-4">
+                <div class="bg-gray-100 rounded-full p-3">
+                  <img src="./icons/c/Container+BackgroundColor.png" alt="" />
+                </div>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">Free Sellers</h3>
+              <p class="text-sm text-gray-500 mb-4">
+                Perfect for getting started Sellers
+              </p>
+              <p class="text-2xl font-bold text-gray-900 mb-6">Free</p>
+
+              <ul class="text-sm text-left space-y-4">
+                <li class="flex items-center text-green-600">
+                  <span class="mr-2">✔</span> Up to 5 product listings
+                </li>
+                <li class="flex items-center text-green-600">
+                  <span class="mr-2">✔</span> Profile name, profile picture,
+                  short bio
+                </li>
+                <li class="flex items-center text-green-600">
+                  <span class="mr-2">✔</span> Default marketplace branding
+                </li>
+                <li class="flex items-center text-red-500">
+                  <span class="mr-2">✖</span> Analytics dashboard
+                </li>
+                <li class="flex items-center text-red-500">
+                  <span class="mr-2">✖</span> Storefront customization
+                </li>
+              </ul>
+            </div>
+
+            <button
+              class="mt-8 bg-white border text-gray-800 py-2 rounded-md hover:bg-gray-100 transition"
+            >
+              Get Started Free
+            </button>
+          </div>
+
+          <!-- Premium Plan -->
+          <div
+            class="bg-white rounded-xl border shadow-sm p-6 relative flex flex-col justify-between"
+          >
+            <!-- Badge -->
+            <div
+              class="absolute top-0 right-0 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded-bl-md"
+            >
+              10% OFF
+            </div>
+
+            <div>
+              <div class="flex justify-center mb-4">
+                <div class="bg-yellow-100 rounded-full p-3">
+                  <img src="./icons/c/Container+Gradient.png" alt="" />
+                </div>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800">
+                Premium Sellers
+              </h3>
+              <p class="text-sm text-gray-500 mb-4">For growing sellers</p>
+              <p class="text-2xl font-bold text-gray-900 mb-1">
+                $29<span class="text-base font-medium text-gray-500"
+                  >/month</span
+                >
+              </p>
+
+              <ul class="text-sm text-left space-y-4 mt-4">
+                <li class="flex items-center text-green-600">
+                  <span class="mr-2">✔</span> Everything in Free +
+                </li>
+                <li class="flex items-center text-green-600">
+                  <span class="mr-2">✔</span> Up to 50 product listings
+                </li>
+                <li class="flex items-center text-green-600">
+                  <span class="mr-2">✔</span> Buyers can message the seller
+                </li>
+                <li class="flex items-center text-green-600">
+                  <span class="mr-2">✔</span> Storefront banner
+                </li>
+                <li class="flex items-center text-green-600">
+                  <span class="mr-2">✔</span> Analytics dashboard
+                </li>
+                <li class="flex items-center text-green-600">
+                  <span class="mr-2">✔</span> Rent option with deposit handling
+                </li>
+                <li class="flex items-center text-green-600">
+                  <span class="mr-2">✔</span> Boosted search visibility
+                </li>
+              </ul>
+            </div>
+
+            <button
+              class="mt-8 bg-yellow-700 text-white py-2 rounded-md hover:bg-yellow-800 transition"
+            >
+              Start Premium
+            </button>
+          </div>
         </div>
-        <h3 class="font-semibold text-gray-800">Keyboards</h3>
-        <p class="text-sm text-gray-500">8,200+ items</p>
       </div>
+    </section>
 
-      <!-- Card 3 -->
-      <div class="flex flex-col items-center bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition">
-        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-red-100 mb-4">
-          <img src="./icons/Drums icon.png" alt="Drums" class="w-6 h-6">
+    <!-- how it works section -->
+
+    <section class="bg-white py-16 px-6">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-3">How It Works</h2>
+        <p class="text-gray-500 mb-16 max-w-xl mx-auto text-sm">
+          Getting started with SoundSellers is simple. Follow these easy steps
+          to find your perfect instrument or teacher.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+          <div
+            class="hidden md:block absolute top-8 left-0 right-0 h-1 bg-gray-200 z-0 mx-10"
+          ></div>
+
+          <!-- Step 1 -->
+          <div class="relative z-10 flex flex-col items-center text-center">
+            <img src="./icons/bnext/Background (4).png" alt="" />
+            <h3 class="font-semibold text-gray-900 mb-1">Browse & Discover</h3>
+            <p class="text-gray-500 text-sm">
+              Search thousands of instruments, equipment, and music teachers in
+              your area or online.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative z-10 flex flex-col items-center text-center">
+            <img src="./icons/bnext/Background (5).png" alt="" />
+            <h3 class="font-semibold text-gray-900 mb-1">Connect & Chat</h3>
+            <p class="text-gray-500 text-sm">
+              Message sellers directly, ask questions, and negotiate prices in
+              our secure chat system.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative z-10 flex flex-col items-center text-center">
+            <img src="./icons/bnext/Background (6).png" alt="" />
+            <h3 class="font-semibold text-gray-900 mb-1">Buy or Rent</h3>
+            <p class="text-gray-500 text-sm">
+              Purchase outright or rent instruments with flexible terms. All
+              transactions are protected.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="relative z-10 flex flex-col items-center text-center">
+            <img src="./icons/bnext/Background (7).png" alt="" />
+            <h3 class="font-semibold text-gray-900 mb-1">Make Music</h3>
+            <p class="text-gray-500 text-sm">
+              Start playing, learning, and creating music with your new gear or
+              lessons.
+            </p>
+          </div>
         </div>
-        <h3 class="font-semibold text-gray-800">Drums</h3>
-        <p class="text-sm text-gray-500">6,800+ items</p>
       </div>
-
-      <!-- Card 4 -->
-      <div class="flex flex-col items-center bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition">
-        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-purple-100 mb-4">
-          <img src="./icons/Audio Equipment icon.png" alt="Audio Equipment" class="w-6 h-6">
+    </section>
+    <section class="m-16 px-6">
+      <div
+        class="max-w-6xl mx-auto bg-cover bg-center rounded-2xl text-white p-10 md:p-16 relative overflow-hidden"
+        style="background-image: url('./icons/Container (6).png')"
+      >
+        <div class="relative z-10 text-center max-w-2xl mx-auto">
+          <h3 class="text-2xl md:text-3xl font-bold mb-4">
+            Discover, Learn & Play with SoundSellers
+          </h3>
+          <p class="text-sm md:text-base mb-6">
+            Find your perfect instrument, learn from expert-led courses, and
+            join a vibrant community of music lovers.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <button
+              class="bg-[#D6A679] hover:bg-[#c29066] text-white font-medium px-5 py-2 rounded-3xl"
+            >
+              Browse Instruments
+            </button>
+            <button
+              class="border border-white text-white hover:bg-white hover:text-black transition font-medium px-5 py-2 rounded-3xl"
+            >
+              Explore Courses
+            </button>
+          </div>
         </div>
-        <h3 class="font-semibold text-gray-800">Audio Equipment</h3>
-        <p class="text-sm text-gray-500">15,300+ items</p>
       </div>
+    </section>
 
-      <!-- Card 5 -->
-      <div class="flex flex-col items-center bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition">
-        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-100 mb-4">
-          <img src="./icons/Microphones icon.png" alt="Microphones" class="w-6 h-6">
+    <!-- footer  -->
+
+    <footer class="bg-[#1E1E1E] text-white text-sm font-sans">
+      <!-- Main Grid -->
+      <div
+        class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-10"
+      >
+        <!-- Brand Section -->
+        <div class="space-y-5 col-span-1">
+          <div class="flex items-center space-x-2">
+            <img
+              src="./icons/Img.png"
+              alt="Logo"
+              class="h-6 w-auto text-[#C89C6C]"
+            />
+            <span class="text-lg font-semibold">SoundSellers</span>
+          </div>
+          <p class="text-[#A3A3A3] leading-relaxed">
+            The premier marketplace for musical instruments and equipment.
+            Connect with musicians, find your perfect gear, and grow your
+            musical journey.
+          </p>
+          <!-- Social Icons -->
+          <div class="flex space-x-4 text-[#C89C6C] text-base">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
         </div>
-        <h3 class="font-semibold text-gray-800">Microphones</h3>
-        <p class="text-sm text-gray-500">4,100+ items</p>
-      </div>
 
-      <!-- Card 6 -->
-      <div class="flex flex-col items-center bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition">
-        <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-yellow-100 mb-4">
-          <img src="./icons/Other Instruments icon.png" alt="Others" class="w-6 h-6">
-        </div>
-        <h3 class="font-semibold text-gray-800">Others</h3>
-        <p class="text-sm text-gray-500">3,200+ items</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-
-  <!-- ================= TRENDING NOW ================= -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      
-      <!-- Section Header -->
-      <div class="flex justify-between items-center mb-8">
+        <!-- Marketplace Links -->
         <div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Trending Now</h2>
-          <p class="text-gray-500">Hot deals that musicians are loving</p>
-        </div>
-        <a href="#" class="flex items-center gap-1 border border-gray-300 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-50 transition">
-          See all →
-        </a>
-      </div>
-
-      <!-- Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        <!-- Card 1 -->
-        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition">
-          <div class="relative">
-            <img src="./icons/card/Frame 11.png" alt="Fender" class="w-full h-48 object-cover">
-            <div class="absolute top-3 left-3 flex gap-2">
-              <span class="bg-gray-100 text-gray-700 text-xs font-medium px-2 py-1 rounded-full">Shop</span>
-              <span class="bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">Great Deal</span>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-semibold text-gray-800">Fender Player Stratocaster</h3>
-            <p class="text-sm text-gray-500">📍 Los Angeles, CA</p>
-            <p class="text-lg font-bold mt-2">$899</p>
-            <div class="flex items-center justify-between mt-4">
-              <button class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md">🛒 Buy Now</button>
-              <button class="border border-gray-300 p-2 rounded-full hover:bg-gray-50">❤️</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition">
-          <div class="relative">
-            <img src="./icons/card/Frame 11 (1).png" alt="Drums" class="w-full h-48 object-cover">
-            <div class="absolute top-3 left-3 flex gap-2">
-              <span class="bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded-full">Hot Deal</span>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-semibold text-gray-800">Pearl Drum Set</h3>
-            <p class="text-sm text-gray-500">📍 New York, NY</p>
-            <p class="text-lg font-bold mt-2">$50<span class="text-sm text-gray-500">/day</span></p>
-            <div class="flex items-center justify-between mt-4">
-              <button class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md">🛒 Rent Now</button>
-              <button class="border border-gray-300 p-2 rounded-full hover:bg-gray-50">❤️</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition">
-          <div class="relative">
-            <img src="./icons/card/Frame 11 (2).png" alt="Keyboard" class="w-full h-48 object-cover">
-            <div class="absolute top-3 left-3 flex gap-2">
-              <span class="bg-yellow-100 text-yellow-700 text-xs font-medium px-2 py-1 rounded-full">Fair Price</span>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-semibold text-gray-800">Yamaha Keyboard</h3>
-            <p class="text-sm text-gray-500">📍 Chicago, IL</p>
-            <p class="text-lg font-bold mt-2">$1200</p>
-            <div class="flex items-center justify-between mt-4">
-              <button class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md">🛒 Buy Now</button>
-              <button class="border border-gray-300 p-2 rounded-full hover:bg-gray-50">❤️</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition">
-          <div class="relative">
-            <img src="./icons/card/Frame 11 (3).png" alt="Violin" class="w-full h-48 object-cover">
-            <div class="absolute top-3 left-3 flex gap-2">
-              <span class="bg-blue-100 text-blue-700 text-xs font-medium px-2 py-1 rounded-full">Limited</span>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-semibold text-gray-800">Classic Violin</h3>
-            <p class="text-sm text-gray-500">📍 San Francisco, CA</p>
-            <p class="text-lg font-bold mt-2">$499</p>
-            <div class="flex items-center justify-between mt-4">
-              <button class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md">🛒 Buy Now</button>
-              <button class="border border-gray-300 p-2 rounded-full hover:bg-gray-50">❤️</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition">
-          <div class="relative">
-            <img src="./icons/card/Frame 11 (4).png" alt="PRS" class="w-full h-48 object-cover">
-            <div class="absolute top-3 left-3 flex gap-2">
-              <span class="bg-yellow-100 text-yellow-700 text-xs font-medium px-2 py-1 rounded-full">Fair Price</span>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-semibold text-gray-800">PRS SE Custom 24</h3>
-            <p class="text-sm text-gray-500">📍 Austin, TX</p>
-            <p class="text-lg font-bold mt-2">$799</p>
-            <div class="flex items-center justify-between mt-4">
-              <button class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md">🛒 Buy Now</button>
-              <button class="border border-gray-300 p-2 rounded-full hover:bg-gray-50">❤️</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition">
-          <div class="relative">
-            <img src="./icons/card/Frame 11 (5).png" alt="Jazzmaster" class="w-full h-48 object-cover">
-            <div class="absolute top-3 left-3 flex gap-2">
-              <span class="bg-yellow-100 text-yellow-700 text-xs font-medium px-2 py-1 rounded-full">Fair Price</span>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-semibold text-gray-800">Fender Jazzmaster</h3>
-            <p class="text-sm text-gray-500">📍 Seattle, WA</p>
-            <p class="text-lg font-bold mt-2">$60<span class="text-sm text-gray-500">/day</span></p>
-            <div class="flex items-center justify-between mt-4">
-              <button class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md">🛒 Rent Now</button>
-              <button class="border border-gray-300 p-2 rounded-full hover:bg-gray-50">❤️</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition">
-          <div class="relative">
-            <img src="./icons/card/w.png" alt="Epiphone" class="w-full h-48 object-cover">
-            <div class="absolute top-3 left-3 flex gap-2">
-              <span class="bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full">Great Deal</span>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-semibold text-gray-800">Epiphone Les Paul Studio</h3>
-            <p class="text-sm text-gray-500">📍 Miami, FL</p>
-            <p class="text-lg font-bold mt-2">$100<span class="text-sm text-gray-500">/day</span></p>
-            <div class="flex items-center justify-between mt-4">
-              <button class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md">🛒 Rent Now</button>
-              <button class="border border-gray-300 p-2 rounded-full hover:bg-gray-50">❤️</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition">
-          <div class="relative">
-            <img src="./icons/card/Frame 11 (6).png" alt="Jackson" class="w-full h-48 object-cover">
-            <div class="absolute top-3 left-3 flex gap-2">
-              <span class="bg-yellow-100 text-yellow-700 text-xs font-medium px-2 py-1 rounded-full">Fair Price</span>
-            </div>
-          </div>
-          <div class="p-4">
-            <h3 class="font-semibold text-gray-800">Jackson Dinky DK2</h3>
-            <p class="text-sm text-gray-500">📍 Denver, CO</p>
-            <p class="text-lg font-bold mt-2">$799</p>
-            <div class="flex items-center justify-between mt-4">
-              <button class="bg-[#b78b57] hover:bg-[#a67b45] text-white text-sm px-4 py-2 rounded-md">🛒 Buy Now</button>
-              <button class="border border-gray-300 p-2 rounded-full hover:bg-gray-50">❤️</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-<div class="bg-white py-12 px-6">
-  <!-- Heading -->
-  <div class="max-w-7xl mx-auto">
-    <div class="flex justify-between items-center mb-8">
-      <div>
-        <h2 class="text-2xl font-bold text-gray-900">Top Music Teachers</h2>
-        <p class="text-sm text-gray-500">Learn from the best instructors in your area</p>
-      </div>
-      <a href="#" class="text-sm text-orange-600 hover:underline flex items-center gap-1">
-        See all <span>→</span>
-      </a>
-    </div>
-
-    <!-- Cards Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      
-      <!-- Card 1 -->
-      <div class="bg-white rounded-xl shadow border overflow-hidden">
-        <div class="relative">
-          <img src="./icons/p/placeholder.svg.png" alt="Beginner Guitar Basics" class="w-full h-48 object-cover">
-          <div class="absolute top-2 right-2 bg-white text-yellow-500 text-xs font-semibold rounded-full px-2 py-0.5 flex items-center gap-1 shadow">
-            ⭐ 4.9
-          </div>
-        </div>
-        <div class="p-4">
-          <h3 class="text-sm font-semibold text-gray-900">Beginner Guitar Basics</h3>
-          <p class="text-sm text-gray-500">Sarah Johnson</p>
-          <p class="flex items-center text-xs text-gray-500 mt-1">📍 Los Angeles, CA</p>
-          <div class="flex flex-wrap gap-1 text-xs mt-2">
-            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Classical</span>
-            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Jazz</span>
-            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Pop</span>
-          </div>
-          <div class="mt-4 flex items-center justify-between text-sm">
-            <span class="font-bold text-gray-800">$45</span>
-            <a href="#" class="text-orange-600 hover:underline">Book Now →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="bg-white rounded-xl shadow border overflow-hidden">
-        <div class="relative">
-          <img src="./icons/p/placeholder.svg (1).png" alt="Saxophone Fundamentals" class="w-full h-48 object-cover">
-          <div class="absolute top-2 right-2 bg-white text-yellow-500 text-xs font-semibold rounded-full px-2 py-0.5 flex items-center gap-1 shadow">
-            ⭐ 4.8
-          </div>
-        </div>
-        <div class="p-4">
-          <h3 class="text-sm font-semibold text-gray-900">Saxophone Fundamentals</h3>
-          <p class="text-sm text-gray-500">James Carter</p>
-          <p class="flex items-center text-xs text-gray-500 mt-1">📍 New York, NY</p>
-          <div class="flex flex-wrap gap-1 text-xs mt-2">
-            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Rock</span>
-            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Blues</span>
-            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Indie</span>
-          </div>
-          <div class="mt-4 flex items-center justify-between text-sm">
-            <span class="font-bold text-gray-800">$50</span>
-            <a href="#" class="text-orange-600 hover:underline">Book Now →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="bg-white rounded-xl shadow border overflow-hidden">
-        <div class="relative">
-          <img src="./icons/p/placeholder.svg (2).png" alt="Violin Made Easy" class="w-full h-48 object-cover">
-          <div class="absolute top-2 right-2 bg-white text-yellow-500 text-xs font-semibold rounded-full px-2 py-0.5 flex items-center gap-1 shadow">
-            ⭐ 4.7
-          </div>
-        </div>
-        <div class="p-4">
-          <h3 class="text-sm font-semibold text-gray-900">Violin Made Easy</h3>
-          <p class="text-sm text-gray-500">Emily Thompson</p>
-          <p class="flex items-center text-xs text-gray-500 mt-1">📍 Seattle, WA</p>
-          <div class="flex flex-wrap gap-1 text-xs mt-2">
-            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Classical</span>
-            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Folk</span>
-            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded">World</span>
-          </div>
-          <div class="mt-4 flex items-center justify-between text-sm">
-            <span class="font-bold text-gray-800">$55</span>
-            <a href="#" class="text-orange-600 hover:underline">Book Now →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="bg-white rounded-xl shadow border overflow-hidden">
-        <div class="relative">
-          <img src="./icons/p/placeholder.svg (3).png" alt="Vocal Training" class="w-full h-48 object-cover">
-          <div class="absolute top-2 right-2 bg-white text-yellow-500 text-xs font-semibold rounded-full px-2 py-0.5 flex items-center gap-1 shadow">
-            ⭐ 4.9
-          </div>
-        </div>
-        <div class="p-4">
-          <h3 class="text-sm font-semibold text-gray-900">Vocal Training</h3>
-          <p class="text-sm text-gray-500">Michael Anderson</p>
-          <p class="flex items-center text-xs text-gray-500 mt-1">📍 Austin, TX</p>
-          <div class="flex flex-wrap gap-1 text-xs mt-2">
-            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Rock</span>
-            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Metal</span>
-            <span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded">Hip-Hop</span>
-          </div>
-          <div class="mt-4 flex items-center justify-between text-sm">
-            <span class="font-bold text-gray-800">$40</span>
-            <a href="#" class="text-orange-600 hover:underline">Book Now →</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-<section class="bg-gray-50 py-16 px-6">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Why Choose SoundSellers?</h2>
-    <p class="text-gray-500 mb-12 text-sm md:text-base">
-      We're more than just a marketplace – we're your trusted partner in your musical journey
-    </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-      <!-- Feature 1 -->
-      <div class="flex flex-col items-center">
-        <div class="bg-green-100 p-4 rounded-xl mb-4">
-          <img src="./icons/b/Background.png" alt="">
-        </div>
-        <h3 class="font-semibold text-gray-900">Secure Transactions</h3>
-        <p class="text-gray-500 text-sm mt-2">
-          Every purchase is protected with our buyer guarantee and secure payment processing.
-        </p>
-      </div>
-
-      <!-- Feature 2 -->
-      <div class="flex flex-col items-center">
-        <div class="bg-yellow-100 p-4 rounded-xl mb-4">
-          <img src="./icons/b/Background (1).png" alt="">
-        </div>
-        <h3 class="font-semibold text-gray-900">Best Prices</h3>
-        <p class="text-gray-500 text-sm mt-2">
-          Compare prices across sellers and get the best deals on quality instruments.
-        </p>
-      </div>
-
-      <!-- Feature 3 -->
-      <div class="flex flex-col items-center">
-        <div class="bg-purple-100 p-4 rounded-xl mb-4">
-          <img src="./icons/b/Background (2).png" alt="">
-        </div>
-        <h3 class="font-semibold text-gray-900">Quality Guaranteed</h3>
-        <p class="text-gray-500 text-sm mt-2">
-          All instruments are inspected and verified for authenticity and condition.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="bg-[#f9f6f2] py-16 px-6">
-  <div class="max-w-6xl mx-auto text-center">
-    <!-- Heading -->
-    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Choose Your Seller Plan</h2>
-    <p class="text-gray-500 mb-12 text-sm md:text-base">
-      Grow your business with the right tools. Start free and scale as you grow.
-    </p>
-
-    <!-- Pricing Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-      <!-- Free Plan -->
-      <div class="bg-white rounded-xl border shadow-sm p-6 flex flex-col justify-between">
-        <div>
-          <div class="flex justify-center mb-4">
-            <div class="bg-gray-100 rounded-full p-3">
-              <img src="./icons/c/Container+BackgroundColor.png" alt="">
-                
-            </div>
-          </div>
-          <h3 class="text-lg font-semibold text-gray-800">Free Sellers</h3>
-          <p class="text-sm text-gray-500 mb-4">Perfect for getting started Sellers</p>
-          <p class="text-2xl font-bold text-gray-900 mb-6">Free</p>
-
-          <ul class="text-sm text-left space-y-2">
-            <li class="flex items-center text-green-600"><span class="mr-2">✔</span> Up to 5 product listings</li>
-            <li class="flex items-center text-green-600"><span class="mr-2">✔</span> Profile name, profile picture, short bio</li>
-            <li class="flex items-center text-green-600"><span class="mr-2">✔</span> Default marketplace branding</li>
-            <li class="flex items-center text-red-500"><span class="mr-2">✖</span> Analytics dashboard</li>
-            <li class="flex items-center text-red-500"><span class="mr-2">✖</span> Storefront customization</li>
+          <h4 class="font-semibold mb-4">Marketplace</h4>
+          <ul class="space-y-2 text-[#E5E5E5]">
+            <li><a href="#">Guitars</a></li>
+            <li><a href="#">Keyboards</a></li>
+            <li><a href="#">Drums</a></li>
+            <li><a href="#">Audio Equipment</a></li>
+            <li><a href="#">Sell Your Gear</a></li>
           </ul>
         </div>
 
-        <button class="mt-8 bg-white border text-gray-800 py-2 rounded-md hover:bg-gray-100 transition">
-          Get Started Free
-        </button>
-      </div>
-
-      <!-- Premium Plan -->
-      <div class="bg-white rounded-xl border shadow-sm p-6 relative flex flex-col justify-between">
-        <!-- Badge -->
-        <div class="absolute top-0 right-0 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded-bl-md">
-          10% OFF
-        </div>
-
+        <!-- Support Links -->
         <div>
-          <div class="flex justify-center mb-4">
-            <div class="bg-yellow-100 rounded-full p-3">
-                <img src="./icons/c/Container+Gradient.png" alt="">
-            </div>
-          </div>
-          <h3 class="text-lg font-semibold text-gray-800">Premium Sellers</h3>
-          <p class="text-sm text-gray-500 mb-4">For growing sellers</p>
-          <p class="text-2xl font-bold text-gray-900 mb-1">$29<span class="text-base font-medium text-gray-500">/month</span></p>
-
-          <ul class="text-sm text-left space-y-2 mt-4">
-            <li class="flex items-center text-green-600"><span class="mr-2">✔</span> Everything in Free +</li>
-            <li class="flex items-center text-green-600"><span class="mr-2">✔</span> Up to 50 product listings</li>
-            <li class="flex items-center text-green-600"><span class="mr-2">✔</span> Buyers can message the seller</li>
-            <li class="flex items-center text-green-600"><span class="mr-2">✔</span> Storefront banner</li>
-            <li class="flex items-center text-green-600"><span class="mr-2">✔</span> Analytics dashboard</li>
-            <li class="flex items-center text-green-600"><span class="mr-2">✔</span> Rent option with deposit handling</li>
-            <li class="flex items-center text-green-600"><span class="mr-2">✔</span> Boosted search visibility</li>
+          <h4 class="font-semibold mb-4">Support</h4>
+          <ul class="space-y-2 text-[#E5E5E5]">
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQ’s</a></li>
+            <li><a href="#">About Us</a></li>
           </ul>
         </div>
 
-        <button class="mt-8 bg-yellow-700 text-white py-2 rounded-md hover:bg-yellow-800 transition">
-          Start Premium
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="bg-white py-20 px-6">
-  <div class="max-w-6xl mx-auto text-center">
-    <h2 class="text-3xl font-bold text-gray-900 mb-3">How It Works</h2>
-    <p class="text-gray-500 mb-16 max-w-xl mx-auto text-sm">
-      Getting started with SoundSellers is simple. Follow these easy steps to find your perfect instrument or teacher.
-    </p>
-
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-      <div class="hidden md:block absolute top-8 left-0 right-0 h-1 bg-gray-200 z-0 mx-10"></div>
-
-      <!-- Step 1 -->
-      <div class="relative z-10 flex flex-col items-center text-center">
-        
-        <img src="./icons/bnext/Background (4).png" alt="">
-        <h3 class="font-semibold text-gray-900 mb-1">Browse & Discover</h3>
-        <p class="text-gray-500 text-sm">
-          Search thousands of instruments, equipment, and music teachers in your area or online.
-        </p>
+        <!-- Newsletter -->
+        <div>
+          <h4 class="font-semibold mb-4">Stay Updated</h4>
+          <p class="text-[#A3A3A3] mb-4 text-[15px] leading-relaxed">
+            Get the latest deals and music news delivered to your inbox.
+          </p>
+          <form
+            class="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-3"
+          >
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="w-full sm:w-auto px-4 py-2 rounded-md bg-[#F6F1EC] text-black placeholder:text-[#737373] focus:outline-none text-sm"
+            />
+            <button
+              type="submit"
+              class="bg-[#C89C6C] hover:bg-[#b68657] text-white px-4 py-2 rounded-md text-sm transition"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
       </div>
 
-      <!-- Step 2 -->
-      <div class="relative z-10 flex flex-col items-center text-center">
-      <img src="./icons/bnext/Background (5).png" alt="">
-        <h3 class="font-semibold text-gray-900 mb-1">Connect & Chat</h3>
-        <p class="text-gray-500 text-sm">
-          Message sellers directly, ask questions, and negotiate prices in our secure chat system.
-        </p>
+      <!-- Divider -->
+      <div class="max-w-7xl mx-auto border-t border-[#3A3A3A]"></div>
+
+      <!-- Bottom Bar -->
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center text-[#A3A3A3] text-xs space-y-3 md:space-y-0"
+      >
+        <div class="flex space-x-6 items-center">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-lock"></i>
+            <span>Secure Payments</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-shipping-fast"></i>
+            <span>Fast Shipping</span>
+          </div>
+        </div>
+        <div>© 2024 SoundSellers. All rights reserved.</div>
+        <div class="flex space-x-3 items-center">
+          <span class="uppercase">stripe</span>
+          <span class="uppercase">PayPal</span>
+        </div>
       </div>
+    </footer>
 
-      <!-- Step 3 -->
-      <div class="relative z-10 flex flex-col items-center text-center">
-        <img src="./icons/bnext/Background (6).png" alt="">
-        <h3 class="font-semibold text-gray-900 mb-1">Buy or Rent</h3>
-        <p class="text-gray-500 text-sm">
-          Purchase outright or rent instruments with flexible terms. All transactions are protected.
-        </p>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="relative z-10 flex flex-col items-center text-center">
-        <img src="./icons/bnext/Background (7).png" alt="">
-        <h3 class="font-semibold text-gray-900 mb-1">Make Music</h3>
-        <p class="text-gray-500 text-sm">
-          Start playing, learning, and creating music with your new gear or lessons.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="mt-20 px-6">
-  <div class="max-w-6xl mx-auto bg-cover bg-center rounded-2xl text-white p-10 md:p-16 relative overflow-hidden"
-       style="background-image: url('./icons/Container (6).png');">
-    <div class="bg-black/50 absolute inset-0 rounded-2xl"></div>
-
-    <div class="relative z-10 text-center max-w-2xl mx-auto">
-      <h3 class="text-2xl md:text-3xl font-bold mb-4">
-        Discover, Learn & Play with SoundSellers
-      </h3>
-      <p class="text-sm md:text-base mb-6">
-        Find your perfect instrument, learn from expert-led courses, and join a vibrant community of music lovers.
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <button class="bg-[#D6A679] hover:bg-[#c29066] text-white font-medium px-5 py-2 rounded-md">
-          Browse Instruments
-        </button>
-        <button class="border border-white text-white hover:bg-white hover:text-black transition font-medium px-5 py-2 rounded-md">
-          Explore Courses
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-<footer class="bg-[#1E1E1E] text-white text-sm font-sans">
-  <!-- Main Grid -->
-  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-10">
-    
-    <!-- Brand Section -->
-    <div class="space-y-5 col-span-1">
-      <div class="flex items-center space-x-2">
-        <img src="./icons/Img.png" alt="Logo" class="h-6 w-auto text-[#C89C6C]" />
-        <span class="text-lg font-semibold">SoundSellers</span>
-      </div>
-      <p class="text-[#A3A3A3] leading-relaxed">
-        The premier marketplace for musical instruments and equipment. Connect with musicians, find your perfect gear, and grow your musical journey.
-      </p>
-      <!-- Social Icons -->
-      <div class="flex space-x-4 text-[#C89C6C] text-base">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
-
-    <!-- Marketplace Links -->
-    <div>
-      <h4 class="font-semibold mb-4">Marketplace</h4>
-      <ul class="space-y-2 text-[#E5E5E5]">
-        <li><a href="#">Guitars</a></li>
-        <li><a href="#">Keyboards</a></li>
-        <li><a href="#">Drums</a></li>
-        <li><a href="#">Audio Equipment</a></li>
-        <li><a href="#">Sell Your Gear</a></li>
-      </ul>
-    </div>
-
-    <!-- Support Links -->
-    <div>
-      <h4 class="font-semibold mb-4">Support</h4>
-      <ul class="space-y-2 text-[#E5E5E5]">
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">FAQ’s</a></li>
-        <li><a href="#">About Us</a></li>
-      </ul>
-    </div>
-
-    <!-- Newsletter -->
-    <div>
-      <h4 class="font-semibold mb-4">Stay Updated</h4>
-      <p class="text-[#A3A3A3] mb-4 text-[15px] leading-relaxed">
-        Get the latest deals and music news delivered to your inbox.
-      </p>
-      <form class="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-3">
-        <input type="email" placeholder="Enter your email"
-          class="w-full sm:w-auto px-4 py-2 rounded-md bg-[#F6F1EC] text-black placeholder:text-[#737373] focus:outline-none text-sm" />
-        <button type="submit"
-          class="bg-[#C89C6C] hover:bg-[#b68657] text-white px-4 py-2 rounded-md text-sm transition">Subscribe</button>
-      </form>
-    </div>
-
-  </div>
-
-  <!-- Divider -->
-  <div class="border-t border-[#3A3A3A]"></div>
-
-  <!-- Bottom Bar -->
-  <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center text-[#A3A3A3] text-xs space-y-3 md:space-y-0">
-    <div class="flex space-x-6 items-center">
-      <div class="flex items-center space-x-2">
-        <i class="fas fa-lock"></i>
-        <span>Secure Payments</span>
-      </div>
-      <div class="flex items-center space-x-2">
-        <i class="fas fa-shipping-fast"></i>
-        <span>Fast Shipping</span>
-      </div>
-    </div>
-    <div>© 2024 SoundSellers. All rights reserved.</div>
-    <div class="flex space-x-3 items-center">
-      <span class="uppercase">stripe</span>
-      <span class="uppercase">PayPal</span>
-    </div>
-  </div>
-</footer>
-
-
-
-
-<script src="./script.js"></script>
-</body>
-
+    <script src="./script.js"></script>
+  </body>
 </html>
